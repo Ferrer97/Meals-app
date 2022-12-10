@@ -1,19 +1,22 @@
+import { GridMeals, Loading, Notfound } from "../components";
 import { useGlobalContext } from "../hooks/useGlobalcontext";
 
 export const MealsPage = () => {
-  const {meals} = useGlobalContext();
+  const { meals, isLoading  } = useGlobalContext();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if(meals.length < 1) {
+    return <Notfound/>
+  }
 
   return (
-    <main>
-      {meals.meals.map((singleMeals) => {
-        const { idMeal, strMeal: title, strMealThumb: image } = singleMeals;
-        return (
-          <section key={idMeal}>
-            <img src={image} alt="img-meal" />
-            <h2>{title}</h2>
-          </section>
-        );
-      })}
+    <main className="w-[95%] grid place-content-center sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto mt-5 overflow-hidden">
+      {meals.map((singleMeals) => (
+        <GridMeals key={singleMeals.idMeal} singleMeals={singleMeals} />
+      ))}
     </main>
   );
 };
