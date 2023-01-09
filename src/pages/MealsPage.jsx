@@ -1,8 +1,9 @@
 import { GridMeals, Loading, Notfound } from "../components";
+import { Favorites } from "../components/Favorites";
 import { useGlobalContext } from "../hooks/useGlobalcontext";
 
 export const MealsPage = () => {
-  const { meals, isLoading  } = useGlobalContext();
+  const { meals, isLoading, favorites} = useGlobalContext();
 
   if (isLoading) {
     return <Loading />;
@@ -14,6 +15,7 @@ export const MealsPage = () => {
 
   return (
     <main className="w-[95%] grid place-content-center sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto mt-5 overflow-hidden">
+      
       {meals.map((singleMeals) => (
         <GridMeals key={singleMeals.idMeal} singleMeals={singleMeals} />
       ))}
