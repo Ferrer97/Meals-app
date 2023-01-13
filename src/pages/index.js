@@ -1,3 +1,2 @@
-export * from './FavoritesMealPage';
-export * from './MealsPage';
-export * from './SingleMealPage';
+export * from "./MealsPage";
+export * from "./SingleMealPage";

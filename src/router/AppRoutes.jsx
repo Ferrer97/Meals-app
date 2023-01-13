@@ -3,7 +3,7 @@ import { Search } from "../components";
 import { Favorites } from "../components/Favorites";
 import { useGlobalContext } from "../hooks/useGlobalcontext";
 
-import { FavoritesMealPage, MealsPage, SingleMealPage } from "../pages";
+import {MealsPage, SingleMealPage } from "../pages";
 
 export const AppRoutes = () => {
   const {favorites} = useGlobalContext();
@@ -12,10 +12,9 @@ export const AppRoutes = () => {
       <Search />
       {favorites.length > 0 && <Favorites/>}
       <Routes>
-        <Route path="/" element={<MealsPage />} />
-        <Route path="/:id" element={<SingleMealPage />} />
-        <Route path="/favorites" element={<FavoritesMealPage />} />
-        <Route path="*" element={<Navigate to={<MealsPage />} />} />
+        <Route path="/Meals-app" element={<MealsPage />} />
+        <Route path="/Meals-app/:id" element={<SingleMealPage />} />
+        <Route path="*" element={<Navigate to="/Meals-app" />} />
       </Routes>
     </>
   );

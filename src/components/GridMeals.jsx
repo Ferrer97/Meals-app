@@ -2,10 +2,11 @@ import { FiThumbsUp } from "react-icons/fi";
 import { useGlobalContext } from "../hooks/useGlobalcontext";
 
 export const GridMeals = ({ singleMeals }) => {
-  const { addFavorites, removeFromFavorites } = useGlobalContext();
+  const { addFavorites, selectMeal } = useGlobalContext();
   return (
     <section className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md">
       <img
+       onClick={ () => selectMeal(singleMeals.idMeal, false)}
         className="w-full rounded-t-lg"
         src={singleMeals.strMealThumb}
         alt="img-meal"
